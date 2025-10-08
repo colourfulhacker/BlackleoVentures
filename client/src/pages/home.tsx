@@ -150,7 +150,7 @@ export default function Home() {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Black Leo Ventures",
-      "description": "Your startup growth partner - From building your MVP to making you investor-ready; we prepare your startup for growth and provide direct access to vetted capital.",
+      "description": "Your startup growth partner - From building your MVP to making you investor-ready, we prepare your startup for growth and provide direct access to vetted capital.",
       "url": "https://blackleoventures.com",
       "logo": logoUrl,
       "contactPoint": {
@@ -408,8 +408,6 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 lg:pt-48 lg:pb-40 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent dark:from-primary/20 dark:via-primary/10 dark:to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent dark:from-primary/10" />
         <div className="max-w-7xl mx-auto px-6 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -419,7 +417,7 @@ export default function Home() {
                   <span className="text-primary">one on one access</span> to investors
                 </h1>
                 <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed" data-testid="text-hero-subheadline">
-                  From building your MVP to making you investor-ready; we prepare your startup for growth and provide direct access to vetted capital.
+                  From building your MVP to making you investor-ready, we prepare your startup for growth and provide direct access to vetted capital.
                 </p>
               </div>
               

@@ -275,8 +275,13 @@
     pointer-events: none;
   }
 
-  /* Yellow text outline for better visibility */
-  .text-primary:not(.no-text-outline) {
+  /* Yellow text outline for better visibility - only on headings */
+  h1.text-primary:not(.no-text-outline),
+  h2.text-primary:not(.no-text-outline),
+  h3.text-primary:not(.no-text-outline),
+  h1 .text-primary:not(.no-text-outline),
+  h2 .text-primary:not(.no-text-outline),
+  h3 .text-primary:not(.no-text-outline) {
     text-shadow: 
       1px 1px 0 var(--primary-outline-color),
       -1px -1px 0 var(--primary-outline-color),
@@ -288,8 +293,12 @@
       -1px 0px 0 var(--primary-outline-color);
   }
 
-  .text-primary svg,
-  svg.text-primary {
+  h1.text-primary svg,
+  h2.text-primary svg,
+  h3.text-primary svg,
+  h1 svg.text-primary,
+  h2 svg.text-primary,
+  h3 svg.text-primary {
     filter: 
       drop-shadow(1px 1px 0 var(--primary-outline-color))
       drop-shadow(-1px -1px 0 var(--primary-outline-color))
