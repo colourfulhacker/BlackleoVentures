@@ -50,3 +50,21 @@ export const equityCalculationResultSchema = z.object({
 
 export type EquityCalculationRequest = z.infer<typeof equityCalculationRequestSchema>;
 export type EquityCalculationResult = z.infer<typeof equityCalculationResultSchema>;
+
+// Pitch Deck Audit schemas
+export const pitchDeckCriteriaScoreSchema = z.object({
+  name: z.string(),
+  score: z.number().min(0).max(10),
+  feedback: z.string(),
+});
+
+export const pitchDeckAuditResultSchema = z.object({
+  totalScore: z.number().min(0).max(100),
+  status: z.enum(['not_ready', 'promising', 'investment_ready']),
+  summaryReport: z.string(),
+  criteriaScores: z.array(pitchDeckCriteriaScoreSchema),
+  suggestedQuestions: z.array(z.string()),
+});
+
+export type PitchDeckCriteriaScore = z.infer<typeof pitchDeckCriteriaScoreSchema>;
+export type PitchDeckAuditResult = z.infer<typeof pitchDeckAuditResultSchema>;

@@ -8,6 +8,7 @@ import Home from "@/pages/home";
 import About from "@/pages/about";
 import Tools from "@/pages/tools";
 import Theme from "@/pages/theme";
+import PitchDeckAudit from "@/pages/pitch-deck-audit";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
 
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/tools" component={Tools} />
       <Route path="/theme" component={Theme} />
+      <Route path="/pitch-deck-audit" component={PitchDeckAudit} />
       <Route component={NotFound} />
     </Switch>
   );

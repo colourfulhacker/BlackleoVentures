@@ -58,6 +58,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { MotivationalFacts } from "@/components/motivational-facts";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Link } from "wouter";
 
 function ServiceShowcase() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -430,11 +431,11 @@ export default function Home() {
                   asChild
                   data-testid="button-pitch-deck-audit"
                 >
-                  <a href="https://wa.me/917837059633?text=Hi%2C%20I%27m%20interested%20in%20a%20Pitch%20Deck%20Audit%20for%20my%20startup.%20Please%20share%20more%20details." target="_blank" rel="noopener noreferrer">
+                  <Link href="/pitch-deck-audit">
                     <span className="absolute inset-0 animate-pulse-slow bg-primary/20 rounded-md"></span>
-                    <MessageCircle className="mr-2 h-5 w-5 relative z-10" />
-                    <span className="relative z-10">Apply for Pitch Deck Audit</span>
-                  </a>
+                    <FileText className="mr-2 h-5 w-5 relative z-10" />
+                    <span className="relative z-10">AI Pitch Deck Audit</span>
+                  </Link>
                 </Button>
                 <Button
                   size="lg"
@@ -1317,10 +1318,10 @@ export default function Home() {
                 asChild
                 data-testid="button-cta-apply"
               >
-                <a href="https://wa.me/917837059633?text=Hi%2C%20I%27m%20interested%20in%20a%20Pitch%20Deck%20Audit%20for%20my%20startup.%20Please%20share%20more%20details." target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  Apply for Pitch Deck Audit
-                </a>
+                <Link href="/pitch-deck-audit">
+                  <FileText className="mr-2 h-5 w-5" />
+                  AI Pitch Deck Audit
+                </Link>
               </Button>
               <Button
                 size="lg"

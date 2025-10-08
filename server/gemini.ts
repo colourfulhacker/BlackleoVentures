@@ -82,3 +82,88 @@ export function calculateEquityDilution(
     dilutionPercentage: parseFloat(dilutionPercentage.toFixed(2)),
   };
 }
+
+export async function analyzePitchDeck(deckContent: string): Promise<any> {
+  try {
+    const systemPrompt = `You are an expert venture capital analyst with 20+ years of experience evaluating startup pitch decks. 
+Your task is to analyze the pitch deck content and provide a comprehensive investment scorecard.
+
+Evaluate the deck based on these 10 criteria (score each 0-10):
+1. Problem & Solution Fit - Clarity of problem, originality of solution
+2. Market Size & Opportunity - TAM/SAM/SOM data, growth potential  
+3. Business Model - Revenue model, scalability, pricing, recurring revenue
+4. Traction & Metrics - Revenue, users, partnerships, MoM growth
+5. Team - Experience, domain expertise, execution ability
+6. Competitive Advantage - Moat, IP, market differentiation
+7. Go-To-Market Strategy - Customer acquisition plan, distribution channels
+8. Financials & Ask - Burn rate, runway, valuation, fund utilization
+9. Exit Potential - M&A or IPO roadmap, comps, precedent exits
+10. Alignment with Investor - Stage, geography, sector alignment
+
+Respond ONLY with valid JSON in this exact format (no additional text):
+{
+  "summaryReport": "2-3 sentence executive summary of the opportunity",
+  "criteriaScores": [
+    {"name": "Problem & Solution Fit", "score": X, "feedback": "Brief analysis"},
+    {"name": "Market Size & Opportunity", "score": X, "feedback": "Brief analysis"},
+    {"name": "Business Model", "score": X, "feedback": "Brief analysis"},
+    {"name": "Traction & Metrics", "score": X, "feedback": "Brief analysis"},
+    {"name": "Team", "score": X, "feedback": "Brief analysis"},
+    {"name": "Competitive Advantage", "score": X, "feedback": "Brief analysis"},
+    {"name": "Go-To-Market Strategy", "score": X, "feedback": "Brief analysis"},
+    {"name": "Financials & Ask", "score": X, "feedback": "Brief analysis"},
+    {"name": "Exit Potential", "score": X, "feedback": "Brief analysis"},
+    {"name": "Alignment with Investor", "score": X, "feedback": "Brief analysis"}
+  ],
+  "suggestedQuestions": ["Question 1?", "Question 2?", "Question 3?", "Question 4?", "Question 5?"]
+}`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: [
+        { role: "user", parts: [{ text: systemPrompt }] },
+        { role: "user", parts: [{ text: `Analyze this pitch deck:\n\n${deckContent}` }] }
+      ],
+    });
+
+    const text = response.text;
+    
+    if (!text || typeof text !== 'string') {
+      throw new Error("Invalid response from Gemini");
+    }
+
+    // Extract JSON from response (handle markdown code blocks)
+    let jsonText = text.trim();
+    if (jsonText.startsWith('```json')) {
+      jsonText = jsonText.replace(/```json\n?/g, '').replace(/```\n?/g, '');
+    } else if (jsonText.startsWith('```')) {
+      jsonText = jsonText.replace(/```\n?/g, '');
+    }
+
+    const analysisResult = JSON.parse(jsonText);
+    
+    // Calculate total score
+    const totalScore = analysisResult.criteriaScores.reduce((sum: number, criteria: any) => sum + criteria.score, 0);
+    
+    // Determine status based on score
+    let status: 'not_ready' | 'promising' | 'investment_ready';
+    if (totalScore >= 80) {
+      status = 'investment_ready';
+    } else if (totalScore >= 60) {
+      status = 'promising';
+    } else {
+      status = 'not_ready';
+    }
+
+    return {
+      totalScore,
+      status,
+      summaryReport: analysisResult.summaryReport,
+      criteriaScores: analysisResult.criteriaScores,
+      suggestedQuestions: analysisResult.suggestedQuestions,
+    };
+  } catch (error) {
+    console.error("Pitch deck analysis error:", error);
+    throw error;
+  }
+}
