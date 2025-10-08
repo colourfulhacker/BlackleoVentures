@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Mail, ArrowLeft, Linkedin, Download } from "lucide-react";
 import logoUrl from "@assets/logo blackleo_1759773901852.png";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function About() {
   return (
@@ -38,6 +39,7 @@ export default function About() {
                   Company Profile
                 </a>
               </Button>
+              <ThemeToggle />
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { PitchPracticeAI } from "@/components/pitch-practice-ai";
 import { EquityDilutionCalculator } from "@/components/equity-dilution-calculator";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { ArrowLeft, Sparkles, Linkedin } from "lucide-react";
 import logoUrl from "@assets/logo blackleo_1759773901852.png";
 import { useLocation } from "wouter";
@@ -30,14 +31,17 @@ export default function Tools() {
             <a href="/" className="flex items-center gap-2" data-testid="link-tools-logo">
               <img src={logoUrl} alt="Black Leo Ventures" className="h-16 w-auto" data-testid="img-tools-logo" />
             </a>
-            <Button
-              variant="ghost"
-              onClick={() => setLocation("/")}
-              data-testid="button-back-home"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Button>
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+              <Button
+                variant="ghost"
+                onClick={() => setLocation("/")}
+                data-testid="button-back-home"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Home
+              </Button>
+            </div>
           </div>
         </div>
       </nav>
