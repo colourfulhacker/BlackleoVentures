@@ -75,3 +75,8 @@
 [x] 75. Remove semicolon after 'investor-ready' in hero text (changed to comma)
 [x] 76. Update CSS to apply text shadow only to headings (h1, h2, h3), not small text
 [x] 77. Verify all changes with screenshot - clean white background achieved
+[x] 78. Redesign pricing section to "Flexible Partnership Models" with 3 models (Fee-Based, Equity Partnership, Custom Solutions)
+[x] 79. Add ThemeToggle (night mode) to header navigation on home page
+[x] 80. Add ThemeToggle to about page header
+[x] 81. Add ThemeToggle to tools page header
+[x] 82. Update pricing section commitment cards to reflect tailored solutions model
