@@ -2,7 +2,6 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import multer from "multer";
-import * as pdfParse from "pdf-parse";
 import { 
   pitchPracticeRequestSchema, 
   equityCalculationRequestSchema 
@@ -106,7 +105,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       // Extract text from PDF
       if (req.file.mimetype === 'application/pdf') {
-        const pdfData = await (pdfParse as any).default(req.file.buffer);
+        const pdfParse = (await import('pdf-parse')).default;
+        const pdfData = await pdfParse(req.file.buffer);
         deckContent = pdfData.text;
       } 
       // For PPT files, we'll use the raw text extraction (limited support)
