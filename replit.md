@@ -32,12 +32,17 @@ A premium, SEO-optimized corporate website for Black Leo Ventures - a startup fu
 ## Design System
 - **Brand Colors**: Yellow-based theme with multiple color schemes
   - Primary (Yellow): #FFD700 / HSL 51, 100%, 50%
-  - Alternative themes: Violet (#8A2BE2), Red (#FF4500)
+  - Alternative themes: Violet (#8A2BE2), Red (#FF4500), Brown (#AC6A1E)
   - Accents: Black (#000000), White (#FFFFFF)
 - **Logo**: h-16 (little big) consistently across all pages and footers for premium brand presence
 - **Color Theme Switcher**: Available on dedicated Theme page (/theme) accessible via footer links on all pages
+  - 4 color options: Yellow (Primary), Violet, Red, Brown
+  - Instant theme switching with localStorage persistence
 - **Typography**: Inter for body text, Space Grotesk for accents
-- **Dark Mode**: Fully supported with persistent theme toggle and localStorage sync
+- **Night Mode**: Dark/light mode toggle available on theme page with system preference support
+  - ThemeToggle component with sun/moon icon
+  - Persistent preference stored in localStorage
+  - Smooth transitions between modes
 - **Responsive**: Mobile-first design, optimized for all screen sizes
 - **Animations**: 
   - Scroll reveal effects for enhanced engagement
@@ -69,7 +74,8 @@ client/
 │   ├── components/
 │   │   ├── ui/               # shadcn components
 │   │   ├── theme-provider.tsx    # Dark/light mode provider
-│   │   ├── color-theme-switcher.tsx  # Color theme switcher (used on theme page)
+│   │   ├── theme-toggle.tsx      # Night mode toggle component (sun/moon)
+│   │   ├── color-theme-switcher.tsx  # Color theme switcher (4 colors: Yellow, Violet, Red, Brown)
 │   │   ├── animated-counter.tsx  # Animated number counter
 │   │   ├── scroll-reveal.tsx     # Scroll-based reveal animations
 │   │   └── floating-whatsapp.tsx # Floating WhatsApp CTA button
@@ -118,6 +124,19 @@ vercel --prod
 - Fast loading and optimized performance
 
 ## Recent Changes
+- 2025-10-08: Night Mode and Brown Theme Addition
+  - **Night Mode System**: Added dark/light mode toggle to theme page
+    - ThemeToggle component displays sun/moon icon in navigation
+    - Supports light, dark, and system preference modes
+    - Persistent theme stored in localStorage
+  - **Brown Color Theme**: Added Brown (#AC6A1E / HSL 32, 70%, 40%) as 4th color option
+    - Available in both theme page and color switcher component
+    - Updated grid layout to 4-column display for all color themes
+    - Updated meta description to include Brown and dark mode features
+  - **Fresh Migration**: Successfully migrated project with all dependencies installed
+    - 582 packages installed via npm
+    - GOOGLE_API_KEY configured for Gemini AI functionality
+    - Workflow running successfully on port 5000
 - 2025-10-07: Navigation & Team Structure Updates
   - **LinkedIn Integration**: Added LinkedIn company link to footer on all pages (home, about, tools)
     - Link: https://www.linkedin.com/company/black-leo-ventures

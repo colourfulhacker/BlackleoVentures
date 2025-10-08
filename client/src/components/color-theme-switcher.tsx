@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/sheet";
 import { Card } from "@/components/ui/card";
 
-type ColorTheme = "yellow" | "violet" | "red";
+type ColorTheme = "yellow" | "violet" | "red" | "brown";
 
 export function ColorThemeSwitcher() {
   const [visible, setVisible] = useState(true);
@@ -56,6 +56,13 @@ export function ColorThemeSwitcher() {
         root.style.setProperty("--sidebar-primary-foreground", "0 0% 98%");
         root.style.setProperty("--ring", "16 100% 50%");
         break;
+      case "brown":
+        root.style.setProperty("--primary", "32 70% 40%");
+        root.style.setProperty("--primary-foreground", "0 0% 98%");
+        root.style.setProperty("--sidebar-primary", "32 70% 40%");
+        root.style.setProperty("--sidebar-primary-foreground", "0 0% 98%");
+        root.style.setProperty("--ring", "32 70% 40%");
+        break;
     }
     
     setCurrentTheme(theme);
@@ -66,6 +73,7 @@ export function ColorThemeSwitcher() {
     { name: "yellow", label: "Yellow (Primary)", color: "bg-[#FFD700]" },
     { name: "violet", label: "Violet", color: "bg-[#8A2BE2]" },
     { name: "red", label: "Red", color: "bg-[#FF4500]" },
+    { name: "brown", label: "Brown", color: "bg-[#AC6A1E]" },
   ];
 
   return (

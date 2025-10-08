@@ -4,8 +4,9 @@ import { ArrowLeft, Palette, Check } from "lucide-react";
 import logoUrl from "@assets/logo blackleo_1759773901852.png";
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
-type ColorTheme = "yellow" | "violet" | "red";
+type ColorTheme = "yellow" | "violet" | "red" | "brown";
 
 export default function Theme() {
   const [, setLocation] = useLocation();
@@ -16,7 +17,7 @@ export default function Theme() {
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Customize your website experience with Black Leo Ventures color themes. Choose from Yellow, Violet, or Red accent colors.');
+      metaDescription.setAttribute('content', 'Customize your website experience with Black Leo Ventures color themes. Choose from Yellow, Violet, Red, or Brown accent colors and toggle between light and dark modes.');
     }
 
     const savedTheme = localStorage.getItem("color-theme") as ColorTheme;
@@ -50,6 +51,13 @@ export default function Theme() {
         root.style.setProperty("--sidebar-primary-foreground", "0 0% 98%");
         root.style.setProperty("--ring", "16 100% 50%");
         break;
+      case "brown":
+        root.style.setProperty("--primary", "32 70% 40%");
+        root.style.setProperty("--primary-foreground", "0 0% 98%");
+        root.style.setProperty("--sidebar-primary", "32 70% 40%");
+        root.style.setProperty("--sidebar-primary-foreground", "0 0% 98%");
+        root.style.setProperty("--ring", "32 70% 40%");
+        break;
     }
     
     setCurrentTheme(theme);
@@ -60,6 +68,7 @@ export default function Theme() {
     { name: "yellow", label: "Yellow (Primary)", color: "bg-[#FFD700]" },
     { name: "violet", label: "Violet", color: "bg-[#8A2BE2]" },
     { name: "red", label: "Red", color: "bg-[#FF4500]" },
+    { name: "brown", label: "Brown", color: "bg-[#AC6A1E]" },
   ];
 
   return (
@@ -71,14 +80,17 @@ export default function Theme() {
             <a href="/" className="flex items-center gap-2" data-testid="link-home-logo">
               <img src={logoUrl} alt="Black Leo Ventures" className="h-16 w-auto" data-testid="img-logo" />
             </a>
-            <Button
-              variant="ghost"
-              onClick={() => setLocation("/")}
-              data-testid="button-back-home"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Button>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Button
+                variant="ghost"
+                onClick={() => setLocation("/")}
+                data-testid="button-back-home"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Home
+              </Button>
+            </div>
           </div>
         </div>
       </nav>
@@ -112,7 +124,7 @@ export default function Theme() {
               <p className="text-center text-muted-foreground mb-6">
                 Select your preferred color theme below
               </p>
-              <div className="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
                 {themes.map((theme) => (
                   <Card
                     key={theme.name}
