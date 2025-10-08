@@ -57,6 +57,7 @@ import { AnimatedCounter } from "@/components/animated-counter";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { MotivationalFacts } from "@/components/motivational-facts";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 function ServiceShowcase() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -317,6 +318,7 @@ export default function Home() {
                 <Download className="w-3 h-3" />
                 Company Profile
               </a>
+              <ThemeToggle />
               <Button
                 size="sm"
                 onClick={() => scrollToSection("contact")}
@@ -1013,104 +1015,143 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Transparent Pricing Section */}
+      {/* Flexible Partnership Models Section */}
       <section className="py-24 md:py-32 bg-gradient-to-b from-background to-card" id="pricing">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal>
             <div className="text-center space-y-4 mb-16">
               <Badge variant="outline" className="text-sm px-4 py-1 mb-4">
                 <Shield className="w-4 h-4 mr-2" />
-                Complete Transparency
+                Flexible & Transparent
               </Badge>
               <h2 className="text-4xl md:text-5xl font-bold" data-testid="text-pricing-headline">
-                Simple, Transparent Pricing
+                Flexible Partnership Models
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                No hidden fees, no surprises. We believe in complete transparency with our pricing structure.
+                Every startup is unique. We offer tailored partnership models designed to match your specific needs, stage, and goals.
               </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
-            <Card className="relative overflow-hidden border-2 interactive-card" data-testid="card-consulting-fee">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+            <Card className="relative overflow-hidden border-2 interactive-card hover-elevate" data-testid="card-fee-model">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
               <CardHeader>
+                <div className="mb-4">
+                  <Badge variant="secondary" className="text-xs">Most Common</Badge>
+                </div>
                 <CardTitle className="text-2xl flex items-center gap-2">
-                  <FileCheck className="w-6 h-6 text-primary" />
-                  Consulting Fee
+                  <IndianRupee className="w-6 h-6 text-primary" />
+                  Fee-Based Model
                 </CardTitle>
                 <CardDescription className="text-base mt-2">
-                  One-time upfront fee for comprehensive services
+                  Traditional consulting + success fee structure
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold text-primary">Modest</span>
-                    <span className="text-muted-foreground">upfront fee</span>
-                  </div>
                   <p className="text-sm text-muted-foreground">
-                    Covers pitch deck audit, strategy development, financial modeling, and investor preparation
+                    A modest upfront consulting fee plus performance-based success fee upon funding closure.
                   </p>
                 </div>
                 <div className="pt-4 border-t space-y-2">
                   <div className="flex items-center gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span>Comprehensive pitch deck audit & refinement</span>
+                    <span>Pitch deck audit & refinement</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span>Financial model development</span>
+                    <span>Investor introductions</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span>Investor matchmaking strategy</span>
+                    <span>Success-based alignment</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span>Regulatory & compliance guidance</span>
+                    <span>Transparent fee structure</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="relative overflow-hidden border-2 border-primary/20 interactive-card" data-testid="card-success-fee">
+            <Card className="relative overflow-hidden border-2 border-primary/30 interactive-card hover-elevate" data-testid="card-equity-model">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl" />
               <CardHeader>
+                <div className="mb-4">
+                  <Badge className="text-xs">Early-Stage Startups</Badge>
+                </div>
                 <CardTitle className="text-2xl flex items-center gap-2">
                   <TrendingUp className="w-6 h-6 text-primary" />
-                  Success Fee
+                  Equity Partnership
                 </CardTitle>
                 <CardDescription className="text-base mt-2">
-                  Performance-based fee upon successful funding
+                  Long-term partnership with equity stake
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold text-primary">% Based</span>
-                    <span className="text-muted-foreground">on funding secured</span>
-                  </div>
                   <p className="text-sm text-muted-foreground">
-                    We only succeed when you succeed. Our success fee aligns our interests with yours
+                    For pre-revenue startups, we may accept equity in lieu of fees while helping you build your MVP and secure funding.
                   </p>
                 </div>
                 <div className="pt-4 border-t space-y-2">
                   <div className="flex items-center gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span>Only charged on successful funding</span>
+                    <span>MVP development support</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span>Competitive industry-standard rates</span>
+                    <span>Zero upfront cash required</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span>Clear terms agreed upfront</span>
+                    <span>Long-term strategic partner</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span>No hidden charges or surprises</span>
+                    <span>Aligned growth incentives</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="relative overflow-hidden border-2 interactive-card hover-elevate" data-testid="card-custom-model">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/15 rounded-full blur-3xl" />
+              <CardHeader>
+                <div className="mb-4">
+                  <Badge variant="outline" className="text-xs">Tailored Solutions</Badge>
+                </div>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Target className="w-6 h-6 text-primary" />
+                  Custom Solutions
+                </CardTitle>
+                <CardDescription className="text-base mt-2">
+                  Hybrid models designed for your unique needs
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-3">
+                  <p className="text-sm text-muted-foreground">
+                    We create bespoke partnership structures combining fees, equity, and success milestones based on your specific situation.
+                  </p>
+                </div>
+                <div className="pt-4 border-t space-y-2">
+                  <div className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span>Flexible payment terms</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span>Milestone-based structures</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span>Hybrid fee + equity models</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span>Case-by-case optimization</span>
                   </div>
                 </div>
               </CardContent>
@@ -1121,31 +1162,31 @@ export default function Home() {
             <CardHeader>
               <CardTitle className="text-2xl text-center flex items-center justify-center gap-2">
                 <Shield className="w-6 h-6 text-primary" />
-                Our Commitment to Transparency
+                Our Commitment to You
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div className="space-y-2">
                   <div className="text-3xl font-bold text-primary">
-                    <AnimatedCounter end={0} prefix="₹" />
+                    <AnimatedCounter end={100} suffix="%" />
                   </div>
-                  <p className="text-sm font-medium">Hidden Fees</p>
-                  <p className="text-xs text-muted-foreground">Everything is disclosed upfront</p>
+                  <p className="text-sm font-medium">Tailored Solutions</p>
+                  <p className="text-xs text-muted-foreground">Each partnership is customized to your needs</p>
                 </div>
                 <div className="space-y-2">
                   <div className="text-3xl font-bold text-primary">
-                    <AnimatedCounter end={100} suffix="%" />
+                    <AnimatedCounter end={0} prefix="₹" />
                   </div>
-                  <p className="text-sm font-medium">Clear Documentation</p>
-                  <p className="text-xs text-muted-foreground">All terms in plain language</p>
+                  <p className="text-sm font-medium">Hidden Fees</p>
+                  <p className="text-xs text-muted-foreground">Complete transparency, always</p>
                 </div>
                 <div className="space-y-2">
                   <div className="text-3xl font-bold text-primary">
                     <AnimatedCounter end={24} suffix="/7" />
                   </div>
                   <p className="text-sm font-medium">Support Access</p>
-                  <p className="text-xs text-muted-foreground">We're here when you need us</p>
+                  <p className="text-xs text-muted-foreground">We're committed to your success</p>
                 </div>
               </div>
             </CardContent>
@@ -1153,12 +1194,12 @@ export default function Home() {
 
           <div className="mt-12 text-center">
             <p className="text-lg text-muted-foreground mb-6">
-              Ready to discuss your specific pricing? Schedule a free consultation
+              Every startup is different. Let's discuss which partnership model fits your needs best.
             </p>
             <Button size="lg" className="w-full sm:w-auto" asChild data-testid="button-pricing-consultation">
               <a href="https://zcal.co/blackleoventures/30min" target="_blank" rel="noopener noreferrer">
                 <Calendar className="mr-2 h-5 w-5" />
-                Book Free Consultation
+                Schedule Free Consultation
               </a>
             </Button>
           </div>
